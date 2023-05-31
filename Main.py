@@ -26,15 +26,7 @@ def run_main():
 
 
 def run_testing():
-    import itertools
-
-    chess_positions = range(64)  # Assuming you have a list or range of 64 chess positions
-
-    combinations = list(itertools.combinations(chess_positions, 16))
-
-    # Print the generated combinations
-    for combo in combinations:
-        print(combo)
+    pass
 
 
 # run_main()
