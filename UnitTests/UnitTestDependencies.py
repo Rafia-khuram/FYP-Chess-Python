@@ -3,14 +3,15 @@ from enum import Enum
 from UnitTests.UnitTestModels.UnitTestModel import UnitTest
 
 
-class ShowTestOf(Enum):
+class TestsOf(Enum):
     ALL = [True, False]
     PASSED = [True]
     FAILED = [False]
+    NONE = []
 
 
-def flatten_position(position: str):
-    return position.replace(' ', '').replace('\n', '')
+def flatten_position(position: str) -> str:
+    return position.replace(' ', '').replace('\n', '').replace('0b', '')
 
 
 def assert_case(tested_case: str, calculated_case: str, case_no: int) -> UnitTest:

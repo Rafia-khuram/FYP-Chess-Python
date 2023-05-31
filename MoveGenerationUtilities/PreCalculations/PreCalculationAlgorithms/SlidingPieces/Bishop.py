@@ -1,8 +1,13 @@
+from ctypes import c_uint64
+
 from DebugUtilities.GameDependency.BoardDependency.DirectionalDependency.SpecificDirectionDependency import \
     SpecificDirections
 from DebugUtilities.GameDependency.BoardDependency.PositionsDependency import Positions
-from MoveGenerationUtilities.PreCalculations.PreCalculationDependencies import *
-from MoveGenerationUtilities.PreCalculations.PreCalculationsData import *
+from MoveGenerationUtilities.Const import right_edge, left_edge, top_edge, bottom_edge
+from MoveGenerationUtilities.PreCalculations.PreCalculationDependencies import count_set_bits, bitmask, move_bit, \
+    unsigned
+from MoveGenerationUtilities.PreCalculations.PreCalculationsData import bishop_attack_count, bishop_magic_number, \
+    bishop_attacks, bishop_attacks_table
 
 
 def init_bishop_attack_mask():
@@ -39,7 +44,7 @@ def get_bishop_attack_mask_exc_ends(piece_position: Positions):
     return unsigned(attack_mask)
 
 
-def get_bishop_attack_mask_inc_end_blockers(piece_position: int, blockers_board: int):
+def get_bishop_attack_mask_inc_end_blockers(piece_position: Positions, blockers_board: int):
     attack_mask = 0
     # Directions are
     # NORTH_EAST = 4

@@ -1,5 +1,8 @@
+from DebugUtilities.GameDependency.BoardDependency.PositionsDependency import Positions
+from DebugUtilities.GameDependency.PieceDependency.PieceNameDependency import PieceName
+from DebugUtilities.GameDependency.PlayerDependency.PlayerSideDependency import PlayerSide
 from MoveGenerationUtilities.Const import before_top_edge, before_bottom_edge
-from MoveGenerationUtilities.Encryptions.moveEncryption import encode_move
+from MoveGenerationUtilities.EncryptionDependency.MoveEncryptions.EncodeMove import encode_move
 from MoveGenerationUtilities.GenerateMovesEngine.GenerateMovesDependencies import *
 from MoveGenerationUtilities.PreCalculations.PreCalculationDependencies import unsigned
 from MoveGenerationUtilities.PreCalculations.PreCalculationsData import square_bitmask

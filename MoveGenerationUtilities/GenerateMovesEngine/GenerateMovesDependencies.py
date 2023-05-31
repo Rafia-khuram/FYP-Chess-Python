@@ -1,6 +1,9 @@
-from DebugUtilities.GameDependencies import Positions, PieceName, PlayerSide
-from MoveGenerationUtilities.Encryptions.EnumAttributes import MoveDecodeAttributes
-from MoveGenerationUtilities.Encryptions.moveEncryption import decode_move
+from DebugUtilities.GameDependency.BoardDependency.PositionsDependency import Positions
+from DebugUtilities.GameDependency.PieceDependency.PieceNameDependency import PieceName
+from DebugUtilities.GameDependency.PlayerDependency.PlayerSideDependency import PlayerSide
+from MoveGenerationUtilities.EncryptionDependency.MoveEncryptionDependencies.MoveEncryptionDependency import \
+    MoveEncryptionAttributes
+from MoveGenerationUtilities.EncryptionDependency.MoveEncryptions.DecodeMove import decode_move
 from MoveGenerationUtilities.PreCalculations.PreCalculationAlgorithms.SlidingPieces.Bishop import get_bishop_attacks
 from MoveGenerationUtilities.PreCalculations.PreCalculationAlgorithms.SlidingPieces.Queen import get_queen_attacks
 from MoveGenerationUtilities.PreCalculations.PreCalculationAlgorithms.SlidingPieces.Rook import get_rook_attacks
@@ -54,8 +57,8 @@ def get_player_wise_pieces_and_sides(white_pieces: list, black_pieces: list, tur
 def get_enpassant_move(enpassant_square: Positions, previous_move: int) -> Positions:
     if enpassant_square != Positions.OUT_OF_BOUNDS:
         return enpassant_square
-    if decode_move(previous_move, MoveDecodeAttributes.DOUBLE_PUSH_FLAG):
-        source_square = decode_move(previous_move, MoveDecodeAttributes.SOURCE_SQUARE)
-        target_square = decode_move(previous_move, MoveDecodeAttributes.TARGET_SQUARE)
+    if decode_move(previous_move, MoveEncryptionAttributes.DOUBLE_PUSH_FLAG):
+        source_square = decode_move(previous_move, MoveEncryptionAttributes.SOURCE_SQUARE)
+        target_square = decode_move(previous_move, MoveEncryptionAttributes.TARGET_SQUARE)
         return Positions((source_square + target_square) / 2)
     return Positions.OUT_OF_BOUNDS

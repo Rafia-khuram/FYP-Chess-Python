@@ -1,16 +1,18 @@
 from DebugUtilities.BeautifyDependency.GameBeautify import white_pieces_char, black_pieces_char
 from DebugUtilities.GameDependency.BoardDependency.PositionsDependency import Positions
 from DebugUtilities.GameDependency.PlayerDependency.PlayerSideDependency import PlayerSide
+from FenUtilities.FenModel import Fen
 from MoveGenerationUtilities.PreCalculations.PreCalculationsData import square_bitmask
 
 
-def decryptFen(fen: str) -> [int, PlayerSide, list, int, int, list, int, int, Positions]:
+def decryptFen(fen: str) -> Fen:
     positional_fen, player_turn, castle_rights, enpassant_square, _, _ = fen.split(' ')
     game_board, white_board, white_pieces, black_board, black_pieces = __decrypt_boards(positional_fen)
     player_turn = __decrypt_player_turn(player_turn)
     white_castle, black_castle = __decrypt_castle_rights(castle_rights)
     enpassant_square_position = __decrypt_enpassant_square(enpassant_square)
-    return game_board, player_turn, white_pieces, white_board, white_castle, black_pieces, black_board, black_castle, enpassant_square_position
+    return Fen(game_board, player_turn, white_pieces, white_board, white_castle, black_pieces, black_board,
+               black_castle, enpassant_square_position)
 
 
 def __decrypt_player_turn(player_turn: str) -> PlayerSide:

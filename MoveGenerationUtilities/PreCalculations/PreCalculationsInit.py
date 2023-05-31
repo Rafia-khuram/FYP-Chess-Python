@@ -6,7 +6,7 @@ from MoveGenerationUtilities.PreCalculations.PreCalculationAlgorithms.NormalPiec
 from MoveGenerationUtilities.PreCalculations.PreCalculationAlgorithms.NormalPieces.Pawn import init_pawn_attacks
 from MoveGenerationUtilities.PreCalculations.PreCalculationAlgorithms.SlidingPieces.Bishop import \
     init_bishop_attack_mask
-from MoveGenerationUtilities.PreCalculations.PreCalculationAlgorithms.SlidingPieces.Dependencies import \
+from MoveGenerationUtilities.PreCalculations.PreCalculationAlgorithms.SlidingPieces.SliderAttacks import \
     init_slider_attacks
 
 from MoveGenerationUtilities.PreCalculations.PreCalculationAlgorithms.SlidingPieces.Rook import init_rook_attack_mask

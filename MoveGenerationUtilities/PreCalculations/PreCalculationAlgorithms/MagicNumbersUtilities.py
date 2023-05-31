@@ -14,9 +14,9 @@ from MoveGenerationUtilities.PreCalculations.PreCalculationsData import *
 
 def init_magic_numbers():
     for position in list(Positions)[:-1]:
-        rook_magic_number[position.value] = find_magic_number(bitmask(position.value),
+        rook_magic_number[position.value] = find_magic_number(position,
                                                               rook_attack_count[position.value], False)
-        bishop_magic_number[position.value] = find_magic_number(bitmask(position.value),
+        bishop_magic_number[position.value] = find_magic_number(position,
                                                                 bishop_attack_count[position.value], True)
 
 
@@ -24,7 +24,7 @@ def generate_magic_number() -> c_uint64:
     return c_uint64(get_64b_rand_no().value & get_64b_rand_no().value & get_64b_rand_no().value)
 
 
-def find_magic_number(piece_position: int, relevant_occupancy_bits: int, bishop: bool) -> int:
+def find_magic_number(piece_position: Positions, relevant_occupancy_bits: int, bishop: bool) -> int:
     occupancies = [0] * 4096
     attacks = [0] * 4096
     attack_mask = get_bishop_attack_mask_exc_ends(piece_position) if bishop else get_rook_attack_mask_exc_ends(
